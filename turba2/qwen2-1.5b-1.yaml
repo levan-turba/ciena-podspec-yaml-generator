@@ -265,10 +265,6 @@ spec:
             - name: vllm-script
               configMap:
                 name: vllm-serve-script
-          nodeSelector:
-            NodeGroupType: x86-cpu-karpenter
-            type: karpenter
-
     workerGroupSpecs:
       - replicas: 1
         minReplicas: 1
@@ -278,7 +274,7 @@ spec:
         template:
           metadata:
             annotations:
-              mig-placement.turba.ai/container.ray-worker: "GPU-DDDDDDDD-DDDD-DDDD-DDDD-DDDDDDDDDDDD:MIG 1g.10gb:6"
+              mig-placement.turba.ai/container.ray-worker: "SERVER_D:GPU-DDDDDDDD-DDDD-DDDD-DDDD-DDDDDDDDDDDD:MIG 1g.10gb:6"
           spec:
             containers:
               - name: ray-worker
